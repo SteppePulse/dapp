@@ -14,7 +14,6 @@ load_dotenv()
 
 # Bot Configuration and Environment Variables
 BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-WEBHOOK_URL = os.getenv('WEBHOOK_URL')
 ADMIN_CHAT_ID = os.getenv('ADMIN_CHAT_ID')
 
 # Initialize Flask and Telebot
@@ -217,9 +216,6 @@ def index():
 
 # Main Execution
 def start_bot():
-    """Start the Telegram bot with webhook setup"""
-    bot.remove_webhook()
-    bot.set_webhook(url=WEBHOOK_URL + BOT_TOKEN)
     
     # Start scheduled updates in a separate thread
     scheduler_thread = threading.Thread(target=run_scheduler)
